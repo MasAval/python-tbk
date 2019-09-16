@@ -4,6 +4,7 @@ import zeep.helpers
 import zeep.exceptions
 import zeep.transports
 from requests import RequestException
+from zeep.cache import InMemoryCache
 
 from .soap_client import SoapClient
 from .wsse import sign_envelope, verify_envelope
@@ -26,6 +27,7 @@ class ZeepSoapClient(SoapClient):
         tbk_cert_data,
         password=None,
         transport_timeout=300,
+        cache_timeout=3600
     ):
         super(ZeepSoapClient, self).__init__(
             wsdl_url, key_data, cert_data, tbk_cert_data
@@ -34,7 +36,8 @@ class ZeepSoapClient(SoapClient):
             key_data, cert_data, tbk_cert_data, password=password
         )
         self.transport_timeout = transport_timeout
-        self.transport = zeep.transports.Transport(timeout=self.transport_timeout)
+        self.cache_timeout = cache_timeout
+        self.transport = zeep.transports.Transport(cache=InMemoryCache(timeout=self.cache_timeout), timeout=self.transport_timeout)
         self.history = zeep.plugins.HistoryPlugin()
         self.client = zeep.Client(
             wsdl_url, wsse=self.wsse, transport=self.transport, plugins=[self.history]
