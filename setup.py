@@ -2,7 +2,7 @@
 from distutils.core import setup
 
 packages = \
-['setuptools', 'tbk', 'tbk.soap']
+['tbk', 'tbk.soap']
 
 package_data = \
 {'': ['*']}
