@@ -2,7 +2,7 @@
 import setuptools
 
 packages = \
-['tbk', 'tbk.soap']
+[]
 
 package_data = \
 {'': ['*']}
