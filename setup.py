@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import setuptools
+from distutils.core import setup
 
 packages = \
 ['tbk', 'tbk.soap']
@@ -7,8 +7,8 @@ packages = \
 package_data = \
 {'': ['*']}
 
-install_requires = setuptools.find_packages()
-install_requires.extend(['xmlsec>=0.6.1', 'zeep>=3.0.0'])
+install_requires = \
+['xmlsec>=0.6.1', 'zeep>=3.0.0']
 
 extras_require = \
 {':python_version >= "2.7" and python_version < "2.8"': ['typing>=3.6']}
@@ -29,4 +29,4 @@ setup_kwargs = {
 }
 
 
-setuptools.setup(**setup_kwargs)
+setup(**setup_kwargs)
