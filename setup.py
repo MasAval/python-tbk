@@ -11,7 +11,7 @@ setuptools.setup(
     author_email='dev@masaval.cl',
     url='https://github.com/MasAval/python-tbk',
     packages=['tbk', 'tbk.soap'],
-    install_requires=['xmlsec>=1.3.9', 'zeep>=4.0.0'],
+    install_requires=['xmlsec==1.3.3', 'zeep==4.0.0'],
     extras_require={
         ':python_version >= "2.7" and python_version < "2.8"': ['typing>=3.6']
     },
